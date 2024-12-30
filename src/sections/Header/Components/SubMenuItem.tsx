@@ -37,6 +37,7 @@ const SubMenuItem = ({ menu }: menuProp) => {
 
   return (
     <Box
+      component="div"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       sx={{
@@ -52,6 +53,7 @@ const SubMenuItem = ({ menu }: menuProp) => {
       </Link>
 
       <Box
+        component="div"
         sx={{
           position: "absolute",
           bottom: 0,

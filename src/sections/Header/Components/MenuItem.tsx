@@ -27,6 +27,7 @@ const MenuItem = ({
 }: menuProp) => {
   return (
     <Box
+      component="div"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       sx={{
@@ -37,6 +38,7 @@ const MenuItem = ({
       }}
     >
       <Box
+        component="div"
         sx={{
           display: "flex",
           alignItems: "center",
@@ -58,13 +60,18 @@ const MenuItem = ({
                 style={{ transition: "all 1s ease-in-out" }}
               />
             ) : (
-              <IconChevronDown size="0.8rem" stroke={4} style={{ transition: "all 1s ease-in-out" }}/>
+              <IconChevronDown
+                size="0.8rem"
+                stroke={4}
+                style={{ transition: "all 1s ease-in-out" }}
+              />
             )}
           </>
         )}
       </Box>
 
       <Box
+        component="div"
         sx={{
           position: "absolute",
           bottom: 0,

@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import * as THREE from 'three';
 
 const Model = ({ modelRef, assetUrl }: { modelRef: any; assetUrl: string }) => {
   const { scene } = useGLTF(assetUrl);
@@ -17,7 +18,8 @@ const Model = ({ modelRef, assetUrl }: { modelRef: any; assetUrl: string }) => {
   }, [scene, modelRef]);
   return <primitive object={scene} />;
 };
-const ThreeDModel = React.forwardRef<HTMLDivElement, { assetUrl: string }>(
+
+const ThreeDModel = React.forwardRef<THREE.Group, { assetUrl: string }>(
   ({ assetUrl }, modelRef) => {
     return (
       <div
@@ -37,5 +39,7 @@ const ThreeDModel = React.forwardRef<HTMLDivElement, { assetUrl: string }>(
     );
   }
 );
+
+ThreeDModel.displayName = "ThreeDModel";
 
 export default ThreeDModel;
