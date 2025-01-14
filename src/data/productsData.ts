@@ -51,6 +51,6 @@ export const ProductData = [
     image_two_service: "Living Area",
     image_two_location: "Canada Toronto",
     centerAsset: "/models/furniture.gltf",
-    message: "",
+    message: "Block, Inc. is not a bank. Banking services are provided by Square Financial Services, Inc. or Sutton Bank; Members FDIC. Square Checking is provided by Sutton Bank, Member FDIC. Square Debit Card is issued by Sutton Bank, Member FDIC, pursuant to a license from Mastercard.",
   },
 ];

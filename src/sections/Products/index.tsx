@@ -220,7 +220,16 @@ const Products = () => {
                   y: inViewProductIndex === index ? 0 : 2,
                 }}
                 transition={{ duration: 0.5 }}
-                sx={{ pr: 12, pt: 3, pl: 4 }}
+                sx={{
+                  pr: 12,
+                  pt: 3,
+                  pl: 4,
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
               >
                 <div>
                   <Image
@@ -253,11 +262,14 @@ const Products = () => {
                     </Typography>
                   </div>
                 </div>
+
+                {product?.message && (
+                  <Typography variant="body2" sx={{color:"#333"}}>{product?.message}</Typography>
+                )}
               </Box>
             </Grid>
           </Grid>
         ))}
-
       </Grid>
     </Grid>
   );
