@@ -40,7 +40,7 @@ export const WebHeader = () => {
   };
 
   return (
-    <Grid container justifyContent="center" bgcolor="#f7f7f7">
+    <Grid container justifyContent="center">
       <Grid item xs={11.6} sm={11.4} md={11.2} lg={11.36} xl={10} pt={0.6}>
         <Grid
           container

@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Container, Grid, Button } from "@mui/material";
 
-const ReadyForYours = () => {
+const ReadyForYours = ({ bottomReached }: { bottomReached: boolean }) => {
   return (
     <Grid container justifyContent="center" sx={{ p: 0.1 }}>
       <Grid
@@ -13,7 +13,7 @@ const ReadyForYours = () => {
         xl={10}
         sx={{
           position: "relative",
-          height: "76dvh",
+          height: "66dvh",
           zIndex: 3,
           overflow: "hidden",
         }}
@@ -21,6 +21,7 @@ const ReadyForYours = () => {
         <Container
           sx={{
             position: "relative",
+            top: 0,
             zIndex: 8,
             display: "flex",
             flexDirection: "column",
@@ -34,8 +35,8 @@ const ReadyForYours = () => {
           <Box
             component="div"
             sx={{
-              position: "fixed",
-              top: 50,
+              position: bottomReached ? "unset" : "fixed",
+              top: bottomReached ? 0 : 50,
               zIndex: 5,
               overflow: "hidden",
               color: "#fff",
@@ -55,13 +56,14 @@ const ReadyForYours = () => {
                 sx={{
                   fontSize: "56px",
                   fontWeight: "500",
-                  mt: 1.8,
+                  mt: 2,
                   color: "#000",
+                  transition: "all 0.2s ease-in",
                 }}
               >
                 Ready for yours.
               </Typography>
-              <Box component="div" sx={{ mb: 6, mt: 7.7, ml: -0.2 }}>
+              <Box component="div" sx={{ mb: 6, mt: 7.5, ml: -0.3 }}>
                 <Button
                   variant="text"
                   sx={{
@@ -69,7 +71,7 @@ const ReadyForYours = () => {
                     py: 1.44,
                     border: 1,
                     borderRadius: 1.5,
-                    borderColor: "1379f3",
+                    borderColor: "#1379f3",
                     fontSize: "0.96rem",
                     fontWeight: "600",
                     textTransform: "inherit",
@@ -82,7 +84,7 @@ const ReadyForYours = () => {
                 <Button
                   variant="contained"
                   sx={{
-                    marginLeft: 3.7,
+                    marginLeft: 3.6,
                     px: 4.6,
                     py: 1.54,
                     borderRadius: 1.5,

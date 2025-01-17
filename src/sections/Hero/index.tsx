@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Box, Typography, Container, Grid, Button } from "@mui/material";
 import { IconPlayerPlayFilled } from "@tabler/icons-react";
 import ReadyForYours from "./ready-for-yours";
+import { useScrollContext } from "@/contexts/ScrollContexts";
 
 const HeroSection = () => {
+  const { heroScrolledDown, passedReadyText, nextSection, readyActions } =
+    useScrollContext();
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Grid container justifyContent="center" sx={{ p: 0.1 }}>
@@ -61,11 +64,11 @@ const HeroSection = () => {
           <Box
             component="div"
             sx={{
-              position: "fixed",
+              position: nextSection ? "static" : "fixed",
               zIndex: -10,
               overflow: "hidden",
               color: "#fff",
-              display: "flex",
+              display: nextSection ? "none" : "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
@@ -78,16 +81,23 @@ const HeroSection = () => {
               <Typography
                 variant="h2"
                 sx={{
-                  fontSize: "56px",
+                  fontSize: { xs: "36px", sm: "51px", md: "56px" },
                   fontWeight: "500",
                   mt: 2.4,
                   px: 2,
                   color: "#fff",
                   zIndex: 1,
                   overflow: "visible",
+                  transition: "all 0.2s ease-out",
                 }}
               >
-                Powering 4 million businesses globally. Ready for yours.
+                Powering 4 million businesses globally. <br />
+                <span
+                  style={{ color: passedReadyText ? "transparent" : "#fff" }}
+                >
+                  {" "}
+                  Ready for yours.
+                </span>
               </Typography>
               <Box component="div" sx={{ mb: 6, mt: 7.42, ml: -0.2 }}>
                 <Button
@@ -95,7 +105,9 @@ const HeroSection = () => {
                   sx={{
                     px: 5.8,
                     py: 1.44,
+
                     borderRadius: 1.5,
+                    borderColor: "transparent",
                     fontSize: "0.96rem",
                     fontWeight: "600",
                     textTransform: "inherit",
@@ -116,6 +128,7 @@ const HeroSection = () => {
                     fontWeight: "600",
                     textTransform: "inherit",
                     bgcolor: "#1379f3",
+                    boxShadow: 0,
                   }}
                 >
                   Contact sales
@@ -128,10 +141,11 @@ const HeroSection = () => {
               sx={{
                 position: "absolute",
                 bottom: 91,
-                display: "flex",
+                display: heroScrolledDown ? "none" : "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
+                transition: "all 0.4s ease",
               }}
               title="Play Video"
               onMouseEnter={() => setIsHovered(true)}
@@ -168,7 +182,7 @@ const HeroSection = () => {
         </Container>
       </Grid>
 
-      <ReadyForYours />
+      <ReadyForYours bottomReached={readyActions} />
     </Grid>
   );
 };
