@@ -32,7 +32,7 @@ const Products = () => {
     <Grid
       container
       sx={{
-        height: "91.12dvh",
+        height: "98.12dvh",
         width: "100dhw",
         justifyContent: "center",
         py: 3,
@@ -44,7 +44,7 @@ const Products = () => {
         xs={11.2}
         sx={{
           overflowY: "scroll",
-          height: "84dvh",
+          height: "100%",
           "&::-webkit-scrollbar": {
             display: "none",
           },
@@ -264,7 +264,9 @@ const Products = () => {
                 </div>
 
                 {product?.message && (
-                  <Typography variant="body2" sx={{color:"#333"}}>{product?.message}</Typography>
+                  <Typography variant="body2" sx={{ color: "#333" }}>
+                    {product?.message}
+                  </Typography>
                 )}
               </Box>
             </Grid>

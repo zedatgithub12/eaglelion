@@ -11,7 +11,7 @@ export default function Home() {
     <div>
       <StickyHeader />
       <HeroSection />
-      {/* <Products /> */}
+      <Products />
       <Businesses />
       <CallToAction />
       <Footer />
