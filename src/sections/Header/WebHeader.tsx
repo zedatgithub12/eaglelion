@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Logo } from "@/ui-components/Logo";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery, useTheme } from "@mui/material";
 import HeaderActionButtons from "./Components/HeaderActionButtons";
 import { MenuProps, menus } from "@/data/menus";
 import MenuItem from "./Components/MenuItem";
+import MobileHeader from "./Components/MobileHeader";
 
 interface BorderProps {
   activeIndex: number | undefined | null;
@@ -13,6 +14,9 @@ interface BorderProps {
 }
 
 export const WebHeader = () => {
+  const theme = useTheme();
+  const smallDevice = useMediaQuery(theme.breakpoints.down("lg"));
+
   const [isHovered, setIsHovered] = useState(false);
   const [borderStyle, setBorderStyle] = useState<BorderProps>({
     activeIndex: null,
@@ -57,41 +61,39 @@ export const WebHeader = () => {
                 <Logo />
               </Grid>
 
-              <Grid item xs={8}>
-                <Box
-                  component="div"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-around",
-                    m: 0,
-                    p: 0,
-                  }}
-                >
-                  {menus.map((menu: MenuProps, index: number) => (
-                    <MenuItem
-                      key={index}
-                      menu={menu}
-                      bottomBorder={index === borderStyle.activeIndex}
-                      borderStyle={borderStyle}
-                      handleMouseEnter={() => handleMouseEnter(index)}
-                      handleMouseLeave={handleMouseLeave}
-                    />
-                  ))}
-                </Box>
+              <Grid
+                item
+                xs={7}
+                sx={{
+                  display: smallDevice ? "none" : "flex",
+                  alignItems: "center",
+               
+                }}
+              >
+                {menus.map((menu: MenuProps, index: number) => (
+                  <MenuItem
+                    key={index}
+                    menu={menu}
+                    bottomBorder={index === borderStyle.activeIndex}
+                    borderStyle={borderStyle}
+                    handleMouseEnter={() => handleMouseEnter(index)}
+                    handleMouseLeave={handleMouseLeave}
+                  />
+                ))}
               </Grid>
             </Grid>
           </Grid>
 
           <Grid
             item
-            xs={2.6}
+            xs={3.2}
             sx={{
               display: "flex",
               alignItems: "center",
+              justifyContent:"flex-end"
             }}
           >
-            <HeaderActionButtons />
+            {smallDevice ? <MobileHeader /> : <HeaderActionButtons />}
           </Grid>
         </Grid>
       </Grid>

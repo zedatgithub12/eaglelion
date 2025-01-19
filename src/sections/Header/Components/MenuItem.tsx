@@ -28,12 +28,8 @@ const MenuItem = ({
   return (
     <Box
       component="div"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       sx={{
         position: "relative",
-        py: 2.2,
-        m: 0,
         cursor: "pointer",
       }}
     >
@@ -42,11 +38,14 @@ const MenuItem = ({
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          py: 2.2,
+          px: 1.2,
         }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <Link href={menu.path}>
-          <Typography variant="subtitle1" sx={{ fontWeight: "500" }}>
+          <Typography variant="subtitle1" sx={{ fontWeight: "550", color:"#222" }}>
             {menu?.name}
           </Typography>
         </Link>
@@ -57,13 +56,13 @@ const MenuItem = ({
               <IconChevronUp
                 size="0.8rem"
                 stroke={4}
-                style={{ transition: "all 1s ease-in-out" }}
+                style={{ transition: "all 0.6s ease-in-out" }}
               />
             ) : (
               <IconChevronDown
                 size="0.8rem"
                 stroke={4}
-                style={{ transition: "all 1s ease-in-out" }}
+                style={{ transition: "all 0.6s ease-in-out" }}
               />
             )}
           </>
@@ -75,7 +74,7 @@ const MenuItem = ({
         sx={{
           position: "absolute",
           bottom: 0,
-          left: 0,
+          // left: 0,
           height: 2,
           backgroundColor: "#222",
           width: bottomBorder ? borderStyle.width : 0,

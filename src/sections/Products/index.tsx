@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ProductData } from "@/data/productsData";
 import { Box, Grid, Typography } from "@mui/material";
 import { IconArrowRight } from "@tabler/icons-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ThreeDModel from "@/components/ThreeDModel";
+import FeaturedProduct from "./featured";
 
 const Products = () => {
   const threeDAsset = useRef<any>(null);
@@ -16,10 +17,10 @@ const Products = () => {
     const element = e.currentTarget;
     const scrollTop = element.scrollTop;
     const scrollHeight = element.scrollHeight - element.clientHeight;
-    const scrollPercentage = (scrollTop / scrollHeight) * 400;
+    const scrollPercentage = (scrollTop / scrollHeight) * 384;
 
     if (threeDAsset.current) {
-      threeDAsset.current.rotation.y = (scrollPercentage * Math.PI) / 60;
+      threeDAsset.current.rotation.y = (scrollPercentage * Math.PI) / 48;
     }
 
     const newIndex = Math.floor(scrollPercentage / 104);
@@ -35,14 +36,14 @@ const Products = () => {
         height: "98.12dvh",
         width: "100dhw",
         justifyContent: "center",
-        py: 3,
-        bgcolor: "#f7f7f7",
       }}
     >
+      {/* <FeaturedProduct /> */}
       <Grid
         item
         xs={11.2}
         sx={{
+          py: 4,
           overflowY: "scroll",
           height: "100%",
           "&::-webkit-scrollbar": {
@@ -80,7 +81,7 @@ const Products = () => {
                   y: inViewProductIndex === index ? 0 : 2,
                 }}
                 transition={{ duration: 0.5 }}
-                sx={{ pr: 1, pt: 3, pl: 4 }}
+                sx={{ pr: 1, pt: 3, pl: 0 }}
               >
                 <Typography variant="h3">{product?.primary_title}</Typography>
 
@@ -199,6 +200,7 @@ const Products = () => {
                 <ThreeDModel
                   ref={inViewProductIndex === index ? threeDAsset : null}
                   assetUrl={product?.centerAsset}
+                  scale={product?.scale}
                 />
               </Box>
             </Grid>
@@ -223,7 +225,7 @@ const Products = () => {
                 sx={{
                   pr: 12,
                   pt: 3,
-                  pl: 4,
+                  pl: 1,
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
@@ -235,7 +237,7 @@ const Products = () => {
                   <Image
                     src={product?.image_two}
                     alt={product?.primary_title}
-                    width={300}
+                    width={320}
                     height={220}
                     style={{
                       objectFit: "cover",
@@ -247,16 +249,23 @@ const Products = () => {
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "flex-start",
+                      justifyContent: "flex-end",
+                      marginTop: 7,
                     }}
                   >
-                    <Typography variant="subtitle1" fontWeight="bold">
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ fontSize: "17px", fontWeight: "bold" }}
+                    >
                       {product?.image_two_service},
                     </Typography>
                     <Typography
                       variant="subtitle1"
-                      fontWeight="regular"
-                      marginLeft={0.6}
+                      sx={{
+                        fontSize: "17px",
+                        fontWeight: "regular",
+                        marginLeft: 0.6,
+                      }}
                     >
                       {product?.image_two_location}
                     </Typography>

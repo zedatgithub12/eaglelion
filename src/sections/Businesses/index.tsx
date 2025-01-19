@@ -30,7 +30,6 @@ const Businesses = () => {
       sx={{
         minHeight: "76dvh",
         width: "100dhw",
-        bgcolor: "#f7f7f7",
         justifyContent: "center",
       }}
     >

@@ -5,12 +5,14 @@ import Footer from "@/sections/Footer";
 import StickyHeader from "@/sections/Header/StickyHeader";
 import HeroSection from "@/sections/Hero";
 import Products from "@/sections/Products";
+import FeaturedProduct from "@/sections/Products/featured";
 
 export default function Home() {
   return (
     <div>
       <StickyHeader />
       <HeroSection />
+      {/* <FeaturedProduct /> */}
       <Products />
       <Businesses />
       <CallToAction />
