@@ -10,6 +10,7 @@ import ThreeDModel from "@/components/ThreeDModel";
 import FeaturedProduct from "./featured";
 
 const Products = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const threeDAsset = useRef<any>(null);
   const [inViewProductIndex, setInViewProductId] = useState(0);
 
@@ -32,6 +33,8 @@ const Products = () => {
   return (
     <Grid
       container
+      component="div"
+      ref={containerRef}
       sx={{
         height: "98.12dvh",
         width: "100dhw",

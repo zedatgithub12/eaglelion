@@ -64,11 +64,11 @@ const HeroSection = () => {
           <Box
             component="div"
             sx={{
-              position: nextSection ? "static" : "fixed",
-              zIndex: -10,
+              position: !nextSection ? "fixed" : "static",
+              // zIndex: -10,
               overflow: "hidden",
               color: "#fff",
-              display: nextSection ? "none" : "flex",
+              display: !nextSection ? "flex" : "none",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",

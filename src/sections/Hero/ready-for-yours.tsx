@@ -35,8 +35,8 @@ const ReadyForYours = ({ bottomReached }: { bottomReached: boolean }) => {
           <Box
             component="div"
             sx={{
-              position: bottomReached ? "unset" : "fixed",
-              top: bottomReached ? 0 : 50,
+              position: !bottomReached ? "fixed" : "unset",
+              top: !bottomReached ? 50 : 0,
               zIndex: 5,
               overflow: "hidden",
               color: "#fff",
